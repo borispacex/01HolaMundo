@@ -24,9 +24,10 @@ export class HeroeTarjetaComponent implements OnInit {
   }
 
   verHeroe() {
-    console.log(this.index);
-    this.router.navigate(['/heroe', this.index]);
-    // this.heroeSeleccionado.emit(this.index);
+    // this.router.navigate(['/heroe', this.index]);
+    // Vamos a enviar dato al padre
+    console.log('Vamos a enviar idx desde el hijo: ' + this.index);
+    this.heroeSeleccionado.emit(this.index);
   }
 
 }

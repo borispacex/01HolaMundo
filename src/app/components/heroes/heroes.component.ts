@@ -18,6 +18,7 @@ export class HeroesComponent implements OnInit{
   }
   // sera llamado desde el componente HIJO heroe-tarjeta
   verHeroe(idx: number) {
-    this.router.navigate(['/heroe', idx]);
+    console.log('Recibe idx del hijo: ', idx);
+    // this.router.navigate(['/heroe', idx]);
   }
 }
