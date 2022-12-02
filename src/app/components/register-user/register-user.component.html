@@ -1,2 +1,55 @@
-<h1>COMPONTES DE REGISTRAR USUARIO</h1>
-<p>Registrar usuario</p>
+<div class="card container">
+    <div class="card-body">
+        <h1 class="card-title">Registro usuario</h1>
+        <form [formGroup]="registroUserForm" autocomplete="off" novalidate (ngSubmit)="registrarUser(registroUserForm.value)">
+            <div class="mb-3 row">
+                <label for="nombres" class="col-form-label col-sm-2">Nombres:</label>
+                <div class="col-md-5">
+                    <input type="text" id="nombres" formControlName="nombres" class="form-control" />
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="apellidos" class="col-form-label col-sm-2">Apellidos:</label>
+                <div class="col-md-5">
+                    <input type="text" id="apellidos" formControlName="apellidos" class="form-control" />
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="email" class="col-form-label col-sm-2">Email:</label>
+                <div class="col-md-5">
+                    <input type="email" id="email" formControlName="email" class="form-control" />
+                </div>
+                <div class="col-md-5">
+                    <em *ngIf="validateControl('email') && hasError('email', 'email')">Por favor, proporcione un Email válido</em>
+                    <em *ngIf="validateControl('email') && hasError('email', 'required')">Email es requerido</em>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="password" class="col-form-label col-sm-2">Password:</label>
+                <div class="col-md-5">
+                    <input type="password" id="password" formControlName="password" class="form-control" />
+                </div>
+                <div class="col-md-5">
+                    <em *ngIf="validateControl('password') && hasError('password', 'required')">Contraseña es requerido</em>
+                    <em *ngIf="validateControl('password') && hasError('password', 'minlength')">Debe tener al menos 6 caracteres</em>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="confirmar" class="col-form-label col-sm-2">Confirmar contraseña:</label>
+                <div class="col-md-5">
+                    <input type="password" id="confirmar" formControlName="confirmar" class="form-control" />
+                </div>
+                <div class="col-md-5">
+                    <em *ngIf="validateControl('confirmar') && hasError('confirmar', 'required')">Confirmar contraseña es requerido</em>
+                    <em *ngIf="validateControl('password') && hasError('password', 'minlength')">Debe tener al menos 6 caracteres</em>
+                </div>
+            </div>
+            <br>
+            <div class="mb-3 row">
+                <div class="col-md-1">          
+                    <button type="submit" class="btn btn-info" [disabled]="!registroUserForm.valid">Register</button>
+                </div>
+            </div>
+        </form>
+    </div>
+  </div>
