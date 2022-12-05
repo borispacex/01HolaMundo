@@ -17,7 +17,7 @@ export class RegisterUserComponent implements OnInit  {
       apellidos: new FormControl(''),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-      confirmar: new FormControl('', [Validators.required])
+      confirmarPassword: new FormControl('', [Validators.required, Validators.maxLength(10)])
     });
   }
   public validateControl (controlName: string) {
@@ -27,8 +27,10 @@ export class RegisterUserComponent implements OnInit  {
     return this.registroUserForm.get(controlName)?.hasError(errorName);
   }
   
-  public registrarUser (registerFormValue: any) {
-    const formValues = { ...registerFormValue };
+  public registrarUser () {
+    console.log(this.registroUserForm);
+    console.log(this.registroUserForm.value);
+    const formValues = this.registroUserForm.value;
     const user: UsuarioDto = {
       nombres: formValues.nombres,
       apellidos: formValues.apellidos,

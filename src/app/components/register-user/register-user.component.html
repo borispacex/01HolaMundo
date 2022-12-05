@@ -1,7 +1,7 @@
 <div class="card container">
     <div class="card-body">
         <h1 class="card-title">Registro usuario</h1>
-        <form [formGroup]="registroUserForm" autocomplete="off" novalidate (ngSubmit)="registrarUser(registroUserForm.value)">
+        <form [formGroup]="registroUserForm" autocomplete="off" novalidate >
             <div class="mb-3 row">
                 <label for="nombres" class="col-form-label col-sm-2">Nombres:</label>
                 <div class="col-md-5">
@@ -37,17 +37,17 @@
             <div class="mb-3 row">
                 <label for="confirmar" class="col-form-label col-sm-2">Confirmar contraseña:</label>
                 <div class="col-md-5">
-                    <input type="password" id="confirmar" formControlName="confirmar" class="form-control" />
+                    <input type="password" id="confirmarPassword" formControlName="confirmarPassword" class="form-control" />
                 </div>
                 <div class="col-md-5">
-                    <em *ngIf="validateControl('confirmar') && hasError('confirmar', 'required')">Confirmar contraseña es requerido</em>
-                    <em *ngIf="validateControl('password') && hasError('password', 'minlength')">Debe tener al menos 6 caracteres</em>
+                    <em *ngIf="validateControl('confirmarPassword') && hasError('confirmarPassword', 'required')">Confirmar contraseña es requerido</em>
+                    <em *ngIf="validateControl('confirmarPassword') && hasError('confirmarPassword', 'maxlength')">No debe exceder de 10 caracteres</em>
                 </div>
             </div>
             <br>
             <div class="mb-3 row">
                 <div class="col-md-1">          
-                    <button type="submit" class="btn btn-info" [disabled]="!registroUserForm.valid">Register</button>
+                    <button type="button" (click)="registrarUser()" class="btn btn-info" [disabled]="!registroUserForm.valid">Register</button>
                 </div>
             </div>
         </form>
