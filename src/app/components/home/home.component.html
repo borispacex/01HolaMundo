@@ -7,6 +7,47 @@
           class="small">main &gt; .container</code>.</p>
       <p>Back to <a href="https://getbootstrap.com/docs/5.1/examples/sticky-footer/">the default sticky footer</a> minus
         the navbar.</p>
+
+        <br>
+        <hr>
+        <!-- ngClass -->
+        <p class="green"> Forma normal </p>
+        <h5 [ngClass]="['green']"> Forma Angular </h5>
+        <h5 [ngClass]="{'green': true, fondoRed: true}"> Forma 2 Angular </h5>
+
+        <input type="checkbox" (change)="cambiarFondo()"> Fondo. (fondoAmarillo = {{fondoAmarillo}})<br>
+        <input type="checkbox" (change)="cambiarLetra()"> Tamaño letra. (letraGrande = {{letraGrande}})<hr>
+        <div [ngClass]="asignaClases()">
+          Este texto variará según el resultado del método.<br>
+          Si fondoAmarillo=true -> el fondo será amarillo.<br>
+          Si letraGrande=true -> las letras serán grandes.
+        </div>
+        <hr>
+        <!-- ngIf -->
+        <!-- ngFor -->
+
+        <!-- ngSwitch -->
+        <div [ngSwitch]="variable">
+          <p *ngSwitchCase="'A'"> respuesta A </p>
+          <p *ngSwitchCase="'B'"> respuesta B </p>
+          <p *ngSwitchDefault> respuesta Default </p>
+        </div>
+
+        <!-- ngModel -->
+        <input class=”form-control” [(ngModel)]="nombre" (keypress)="cambiaNombre($event)">
+        <h3>Hola: {{ nombre }} </h3>
+
+        <!-- ngStyle -->
+        <h2>Ejemplo ng-style</h2>
+        <button [ngStyle] = "{
+          'backgroundColor': canSave ? 'pink' : 'blue',
+          'color': canSave ? 'red' : 'yellow',
+          'margin-left': '200px',
+          'padding': '30px',
+          'margin-top': '100px' }">Un simple boton</button>
+
+        <hr>
+        <br>
     </div>
   </main>
   <!-- FIN HOME -->
